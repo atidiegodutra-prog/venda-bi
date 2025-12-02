@@ -1,0 +1,41 @@
+ProductID,Produto,Categoria,Marca,Subcategoria
+1,Notebook Dell,Eletrônicos,Dell,Notebook
+2,Mouse Logitech,Periféricos,Logitech,Mouse
+3,Teclado Mecânico,Periféricos,Generic,Teclado
+4,Monitor LG 27,Monitores,LG,Monitor
+5,Webcam HD,Periféricos,Generic,Webcam
+6,Fone Bluetooth,Acessórios,Generic,Fone
+7,SSD 1TB,Armazenamento,Generic,SSD
+8,Processador Intel,Hardware,Intel,CPU
+9,Placa Mãe,Hardware,Generic,Placa Mãe
+10,RAM 16GB,Hardware,Kingston,RAM
+11,Fonte 750W,Hardware,Generic,Fonte
+12,Impressora HP,Periféricos,HP,Impressora
+13,Scanner,Periféricos,Generic,Scanner
+14,Tablet Samsung,Eletrônicos,Samsung,Tablet
+15,Smartphone Xiaomi,Eletrônicos,Xiaomi,Smartphone
+16,Headset Gamer,Acessórios,Generic,Headset
+17,Mousepad Grande,Acessórios,Generic,Mousepad
+18,Suporte Monitor,Acessórios,Generic,Suporte
+19,Hub USB,Periféricos,Generic,Hub
+20,Cabo HDMI,Acessórios,Generic,Cabo
+21,Monitor Curvo,Monitores,Generic,Monitor
+22,GPU RTX 3060,Hardware,NVIDIA,GPU
+23,Switch KVM,Periféricos,Generic,Switch
+24,Cabo Ethernet,Acessórios,Generic,Cabo
+25,Roteador Wi-Fi,Eletrônicos,Generic,Roteador
+26,Câmera Segurança,Eletrônicos,Generic,Câmera
+27,Smartwatch,Eletrônicos,Generic,Smartwatch
+28,Carregador Rápido,Acessórios,Generic,Carregador
+29,Bateria Externa,Acessórios,Generic,Bateria
+30,Estabilizador,Hardware,Generic,Estabilizador
+31,Ventilador Cooler,Hardware,Generic,Cooler
+32,Case RGB,Hardware,Generic,Case
+33,Teclado Sem Fio,Periféricos,Generic,Teclado
+34,Monitor 4K,Monitores,Generic,Monitor
+35,Notebook Gamer,Eletrônicos,Generic,Notebook
+36,Desktop Completo,Eletrônicos,Generic,Desktop
+37,Projetor 1080p,Eletrônicos,Generic,Projetor
+38,Tela Interativa,Eletrônicos,Generic,Tela
+39,Câmera Webcam,Periféricos,Generic,Webcam
+40,Microfone Profissional,Periféricos,Generic,Microfone

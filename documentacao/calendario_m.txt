@@ -1,0 +1,16 @@
+// Power Query M para criar a tabela Calendario
+let
+    Fonte = Csv.Document(File.Contents("./dados/vendas.csv"),[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+    Promoted = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+    AlterarTipos = Table.TransformColumnTypes(Promoted,{{"Data", type date}}),
+    MinData = List.Min(AlterarTipos[Data]),
+    MaxData = List.Max(AlterarTipos[Data]),
+    ListaDatas = List.Dates(MinData, Duration.Days(MaxData - MinData) + 1, #duration(1,0,0,0)),
+    Tabela = Table.FromList(ListaDatas, Splitter.SplitByNothing(), {"Data"}, null, ExtraValues.Error),
+    TipoAlterado = Table.TransformColumnTypes(Tabela,{{"Data", type date}}),
+    AdicionarAno = Table.AddColumn(TipoAlterado, "Ano", each Date.Year([Data]), Int64.Type),
+    AdicionarMes = Table.AddColumn(AdicionarAno, "Mes", each Date.Month([Data]), Int64.Type),
+    AdicionarNomeMes = Table.AddColumn(AdicionarMes, "NomeMes", each Date.ToText([Data], "MMMM"), type text),
+    AdicionarTrimestre = Table.AddColumn(AdicionarNomeMes, "Trimestre", each Date.QuarterOfYear([Data]), Int64.Type)
+in
+    AdicionarTrimestre
