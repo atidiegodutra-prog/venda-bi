@@ -1,0 +1,73 @@
+// ===== MEDIDAS DAX PARA POWER BI =====
+
+// 1. MEDIDAS DE FATURAMENTO
+Total Vendas = SUM('Vendas'[Valor_Total])
+
+Vendas Mês Atual = TOTALMTD([Total Vendas], 'Calendario'[Data])
+
+Vendas YTD = TOTALYTD([Total Vendas], 'Calendario'[Data])
+
+Vendas Mês Anterior = CALCULATE(
+    [Total Vendas],
+    DATEADD('Calendario'[Data], -1, MONTH)
+)
+
+Crescimento MoM = 
+VAR VendasAtual = [Vendas Mês Atual]
+VAR VendasAnterior = [Vendas Mês Anterior]
+RETURN
+    DIVIDE(VendasAtual - VendasAnterior, VendasAnterior, 0)
+
+// 2. MEDIDAS DE QUANTIDADE
+Total Quantidade = SUM('Vendas'[Quantidade])
+
+Ticket Médio = DIVIDE([Total Vendas], COUNTA('Vendas'[ID_Venda]), 0)
+
+Quantidade Média por Venda = DIVIDE([Total Quantidade], COUNTA('Vendas'[ID_Venda]), 0)
+
+// 3. MEDIDAS DE PERFORMANCE
+Total Vendedores = DISTINCTCOUNT('Vendas'[Vendedor])
+
+Total Regioes = DISTINCTCOUNT('Vendas'[Regiao])
+
+Total Categorias = DISTINCTCOUNT('Vendas'[Categoria])
+
+Total Vendas Concluídas = CALCULATE(
+    COUNTA('Vendas'[ID_Venda]),
+    'Vendas'[Status] = "Concluída"
+)
+
+// 4. TOP 5 PRODUTOS
+Top 5 Produtos = 
+VAR TopProdutos = 
+    TOPN(5, 
+        SUMMARIZE('Vendas', 'Vendas'[Produto], "Total", [Total Vendas]),
+        [Total],
+        DESC
+    )
+RETURN TopProdutos
+
+// 5. ANÁLISE POR REGIÃO
+Rank Regiao = RANKX(
+    ALLSELECTED('Vendas'[Regiao]),
+    [Total Vendas],,
+    DESC
+)
+
+// 6. PERCENTUAL DO TOTAL
+% do Total = DIVIDE(
+    [Total Vendas],
+    CALCULATE([Total Vendas], ALLSELECTED('Vendas')),
+    0
+)
+
+// 7. META E PERFORMANCE
+Meta Mensal = 50000
+
+% Meta Atingida = DIVIDE(
+    [Vendas Mês Atual],
+    [Meta Mensal],
+    0
+)
+
+Diferença Meta = [Vendas Mês Atual] - [Meta Mensal]
