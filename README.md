@@ -1,5 +1,6 @@
 # venda-bi
 Dashboard de vendas Power BI com análise completa de performance, regiões, produtos e vendedores.
+USADO GOOGLE SHEET COMO BANCO DE DADOS
 
 ## 📁 Estrutura do Projeto
 
@@ -17,8 +18,8 @@ venda-bi/
 
  #Importar Dados
 - Abra Power BI Desktop
-- Selecione "Obter Dados" → "Texto/CSV"
-- Escolha o arquivo `dados/vendas.csv`
+- Selecione "Obter Dados" → "Web"
+- Cole o link do google sheets
 
 #Criar Medidas
 - Copie todas as medidas de `modelos/medidas_dax.txt`
